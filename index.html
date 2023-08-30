@@ -1,7 +1,127 @@
 <!DOCTYPE html>
 <head>
-    <link rel="stylesheet" href="static/css/style.css">
+    <!-- import css and fontawesome -->
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- this is the colour that appears both as the side of the discord embed, and also next to the notch on iphone -->
+    <meta name="theme-color" content="#100024">
+    <!-- favicon -->
+    <link rel="icon" href="static/media/fav64x.png" type="image/x-icon">
+    <!-- removing this makes things really odd on mobile, i dont actually really know why it's needed. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>emmaline's personal home page</title>
+
+    <!-- set up discord / twitter embed -->
+    <meta content="emmaline's personal home page" property="og:title">
+    <meta content="the place for all of emmaline's projects and online presence!" property="og:description">
+    <meta name="og:image" itemprop="image" content="https://emmaline.app/static/media/mainborder256x.png">
+
 </head>
 <body>
-    <a class="bold big_text shine" href="https://github.com/ignpoppyseed">@ignpoppyseed</a>
+    <!-- begin navbar + header -->
+    <div id="navbar" class="navbar">
+        <div style="display: flex; width: 100%;">
+                <a href="/">
+                    <div id="brand_container">
+                        <img class="me_img" id="nav_img" src="static/media/7d53dad3c0dda96f5dea0ad071183a43.png">
+                        <p id="nav_text" class="bold">emmaline.app</p>
+                    </div>
+                </a>
+                <a class="nav_element nav_icon" onclick="mobile_nav_dropdown()"><i class="fa fa-bars"></i></a>
+            </div>
+        <div id="nav_elements" class="nav_elements">
+            <a class="nav_element nav_selected" href="/"><p>home</p></a>
+            <a class="nav_element" href="/about"><p>about</p></a>
+            <a class="nav_element" href="/projects"><p>projects</p></a>
+            <a class="nav_element" href="/socials"><p>socials</p></a>
+            <!-- <a class="nav_element" href="https://poppys.cafe" target="_blank"><p>blog</p></a> -->
+            <a class="nav_element" href="/nowplaying"><p>what i'm listening to</p></a>
+        </div>
+    </div>
+    <div id="nav_space"></div>
+    <!-- end navbar + header -->
+    <div id="about_me_and_img_container">
+        <div id="about_me">
+            <a class="bold big_text shine break text_shadow" href="https://github.com/ignpoppyseed" target="_blank">emmaline.app</a>
+            <p class="small_text stc text_shadow">Python, C# and JavaScript developer always looking to help!</p>
+            <!-- <p>im poppy! i love my wife i love my wife i love my wife i love my wife i love my wife i love my wife i love my wife i love my wife i love my wife i love my wife i love my wife i love my wife i love my wife i love my wife i love my wife i love my wife i love my wife i love my wife i love my wife i love my wife i love my wife i love my wife i love my wife i love my wife </p> -->
+            <p class="bold onefive text_shadow">Currently listening to:</p>
+            <div class="now_playing">
+                <div class="now_playing_album_art" id="now_playing_album_art" style="--image-src:url()"></div>
+                <div class="song_info">
+                    <a class="now_playing_title_url" id="now_playing_title_url" target="_blank"><p class="now_playing_title bold" id="now_playing_title">loading...</p></a>
+                    <a class="now_playing_artist_url" id="now_playing_artist_url" target="_blank"><p class="now_playing_artist stc" id="now_playing_artist">loading...</p></a>
+                </div>
+                <a class="last_fm_logo_now_playing_page" href="https://last.fm/user/xpoppyseed" target="_blank"><svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="last_fm_logo"><title>Last.fm</title><path d="M10.584 17.21l-.88-2.392s-1.43 1.594-3.573 1.594c-1.897 0-3.244-1.649-3.244-4.288 0-3.382 1.704-4.591 3.381-4.591 2.42 0 3.189 1.567 3.849 3.574l.88 2.749c.88 2.666 2.529 4.81 7.285 4.81 3.409 0 5.718-1.044 5.718-3.793 0-2.227-1.265-3.381-3.63-3.931l-1.758-.385c-1.21-.275-1.567-.77-1.567-1.595 0-.934.742-1.484 1.952-1.484 1.32 0 2.034.495 2.144 1.677l2.749-.33c-.22-2.474-1.924-3.492-4.729-3.492-2.474 0-4.893.935-4.893 3.932 0 1.87.907 3.051 3.189 3.601l1.87.44c1.402.33 1.869.907 1.869 1.704 0 1.017-.99 1.43-2.86 1.43-2.776 0-3.93-1.457-4.59-3.464l-.907-2.75c-1.155-3.573-2.997-4.893-6.653-4.893C2.144 5.333 0 7.89 0 12.233c0 4.18 2.144 6.434 5.993 6.434 3.106 0 4.591-1.457 4.591-1.457z"/></svg></a>
+            </div>
+        </div>
+        <!-- <div id="me_img_parent">
+            <img class="me_img" src="static/media/101280841_p0.jpg">
+        </div> -->
+    </div>
 </body>
+<script>
+    function mobile_nav_dropdown() {
+        var navbar = document.getElementById("navbar");
+        if (navbar.className === "navbar") { navbar.className += " mobile"; }
+        else { navbar.className = "navbar"; }
+    }
+</script>
+<script>
+    document.querySelector(':root').style.setProperty('--mobile_menu_y_offset', document.getElementById('navbar').offsetHeight+'px');
+</script>
+<script>
+    // fetch('/api/lastfmapi?req_type=recent_song_example').then(response => response.json())
+    fetch('/api/lastfmapi?req_type=recent_song').then(response => response.json())
+    .then(data => {
+        document.getElementById('now_playing_title').innerText = data.song_name
+        document.getElementById('now_playing_title_url').href = data.song_last_fm_url
+        document.getElementById('now_playing_artist').innerText = data.artist_name
+        document.getElementById('now_playing_artist_url').href = data.artist_last_fm_url
+        document.getElementById('now_playing_album_art').style.setProperty('--image-src', 'url(' + data.image + ')')
+        document.getElementById('now_playing').classList.add('activated')
+        // title = document.getElementById('now_playing_title')
+        // artist = document.getElementById('now_playing_artist')
+        // album_art = document.getElementById('now_playing_album_art')
+    })
+    .catch(error => { console.log('request failed:', error) });
+</script>
+<script>
+    // define password to do a thing
+    const secret_message = 'silly'
+
+    // function is executed when password is entered
+    function password_is_valid() {
+        alert('you found velcro\'s secret message!!! secret password: '+nonsense_of_length(5))
+    }
+
+    // function to generate a nonsense string
+    function nonsense_of_length(length) {
+        let result = '';
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        const charactersLength = characters.length;
+        let counter = 0;
+        while (counter < length) {
+            result += characters.charAt(Math.floor(Math.random() * charactersLength));
+            counter += 1;
+        }
+        return result;
+    }
+
+    // register the keygrabber and set up vars
+    window.onload = function() {
+        secret_message_trigger = ''
+        document.addEventListener('keydown', function(event) {
+            if (secret_message.split('').includes(event.key)) { 
+                secret_message_trigger += event.key 
+            } else { secret_message_trigger = '' }
+            if (secret_message_trigger == secret_message) {
+                password_is_valid()
+                secret_message_trigger = ''
+            }
+        }, {passive:false});
+    }
+</script>
+<!-- i love my wife -->
+<!-- lm + poppy 2023 -->
+<!-- ©poppy 2023 -->

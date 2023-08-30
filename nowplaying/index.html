@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="theme-color" content="#100024">
+    <link rel="icon" href="/static/media/fav64x.png" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>what i'm listening to | emmaline.app</title>
+
+    <!-- set up discord / twitter embed -->
+    <meta content="what i'm listening to | emmaline.app" property="og:title">
+    <meta content="the place for all of emmaline's projects and online presence!" property="og:description">
+    <meta name="og:image" itemprop="image" content="https://emmaline.app/static/media/mainborder256x.png">
+</head>
+<body class="now_playing_body">
+    <!-- begin navbar + header -->
+    <div id="navbar" class="navbar">
+        <div style="display: flex; width: 100%;">
+                <a href="/">
+                    <div id="brand_container">
+                        <img class="me_img" id="nav_img" src="/static/media/7d53dad3c0dda96f5dea0ad071183a43.png">
+                        <p id="nav_text" class="bold">emmaline.app</p>
+                    </div>
+                </a>
+                <a class="nav_element nav_icon" onclick="mobile_nav_dropdown()"><i class="fa fa-bars"></i></a>
+            </div>
+        <div id="nav_elements" class="nav_elements">
+            <a class="nav_element" href="/"><p>home</p></a>
+            <a class="nav_element" href="/about"><p>about</p></a>
+            <a class="nav_element" href="/projects"><p>projects</p></a>
+            <a class="nav_element" href="/socials"><p>socials</p></a>
+            <!-- <a class="nav_element" href="https://poppys.cafe" target="_blank"><p>blog</p></a> -->
+            <a class="nav_element nav_selected" href="/nowplaying"><p>what i'm listening to</p></a>
+        </div>
+    </div>
+    <div id="nav_space" style="position: relative; height: var(--mobile_menu_y_offset); z-index: -1;"></div>
+    <!-- end navbar + header -->
+    <!-- begin page content -->
+    <div class="all_playing">
+        <!-- begin playing -->
+        <!-- currently playing -->
+        <p class="bold onefive text_shadow">currently playing:</p>
+        <div class="now_playing">
+            <div class="now_playing_album_art" id="now_playing_album_art" style="--image-src:url()"></div>
+            <div class="song_info">
+                <a class="now_playing_title_url" id="now_playing_title_url" target="_blank"><p class="now_playing_title bold" id="now_playing_title">loading...</p></a>
+                <a class="now_playing_artist_url" id="now_playing_artist_url" target="_blank"><p class="now_playing_artist stc" id="now_playing_artist">loading...</p></a>
+            </div>
+            <a class="last_fm_logo_now_playing_page" href="https://last.fm/user/xpoppyseed" target="_blank"><svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="last_fm_logo"><title>Last.fm</title><path d="M10.584 17.21l-.88-2.392s-1.43 1.594-3.573 1.594c-1.897 0-3.244-1.649-3.244-4.288 0-3.382 1.704-4.591 3.381-4.591 2.42 0 3.189 1.567 3.849 3.574l.88 2.749c.88 2.666 2.529 4.81 7.285 4.81 3.409 0 5.718-1.044 5.718-3.793 0-2.227-1.265-3.381-3.63-3.931l-1.758-.385c-1.21-.275-1.567-.77-1.567-1.595 0-.934.742-1.484 1.952-1.484 1.32 0 2.034.495 2.144 1.677l2.749-.33c-.22-2.474-1.924-3.492-4.729-3.492-2.474 0-4.893.935-4.893 3.932 0 1.87.907 3.051 3.189 3.601l1.87.44c1.402.33 1.869.907 1.869 1.704 0 1.017-.99 1.43-2.86 1.43-2.776 0-3.93-1.457-4.59-3.464l-.907-2.75c-1.155-3.573-2.997-4.893-6.653-4.893C2.144 5.333 0 7.89 0 12.233c0 4.18 2.144 6.434 5.993 6.434 3.106 0 4.591-1.457 4.591-1.457z"/></svg></a>
+        </div>
+        <!-- top album this week -->
+        <p class="bold onefive text_shadow" id="top_album_this_week">top album this week (0 plays):</p>
+        <div class="now_playing">
+            <div class="now_playing_album_art" id="album_this_week_album_art" style="--image-src:url()"></div>
+            <div class="song_info">
+                <a class="now_playing_title_url" id="album_this_week_title_url" target="_blank"><p class="now_playing_title bold" id="album_this_week_title">loading...</p></a>
+                <a class="now_playing_artist_url" id="album_this_week_artist_url" target="_blank"><p class="now_playing_artist stc" id="album_this_week_artist">loading...</p></a>
+            </div>
+            <a class="last_fm_logo_now_playing_page" href="https://last.fm/user/xpoppyseed" target="_blank"><svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="last_fm_logo"><title>Last.fm</title><path d="M10.584 17.21l-.88-2.392s-1.43 1.594-3.573 1.594c-1.897 0-3.244-1.649-3.244-4.288 0-3.382 1.704-4.591 3.381-4.591 2.42 0 3.189 1.567 3.849 3.574l.88 2.749c.88 2.666 2.529 4.81 7.285 4.81 3.409 0 5.718-1.044 5.718-3.793 0-2.227-1.265-3.381-3.63-3.931l-1.758-.385c-1.21-.275-1.567-.77-1.567-1.595 0-.934.742-1.484 1.952-1.484 1.32 0 2.034.495 2.144 1.677l2.749-.33c-.22-2.474-1.924-3.492-4.729-3.492-2.474 0-4.893.935-4.893 3.932 0 1.87.907 3.051 3.189 3.601l1.87.44c1.402.33 1.869.907 1.869 1.704 0 1.017-.99 1.43-2.86 1.43-2.776 0-3.93-1.457-4.59-3.464l-.907-2.75c-1.155-3.573-2.997-4.893-6.653-4.893C2.144 5.333 0 7.89 0 12.233c0 4.18 2.144 6.434 5.993 6.434 3.106 0 4.591-1.457 4.591-1.457z"/></svg></a>
+        </div>
+        <!-- top album this month -->
+        <p class="bold onefive text_shadow" id="top_album_this_month">top album this month (0 plays):</p>
+        <div class="now_playing">
+            <div class="now_playing_album_art" id="album_this_month_album_art" style="--image-src:url()"></div>
+            <div class="song_info">
+                <a class="now_playing_title_url" id="album_this_month_title_url" target="_blank"><p class="now_playing_title bold" id="album_this_month_title">loading...</p></a>
+                <a class="now_playing_artist_url" id="album_this_month_artist_url" target="_blank"><p class="now_playing_artist stc" id="album_this_month_artist">loading...</p></a>
+            </div>
+            <a class="last_fm_logo_now_playing_page" href="https://last.fm/user/xpoppyseed" target="_blank"><svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="last_fm_logo"><title>Last.fm</title><path d="M10.584 17.21l-.88-2.392s-1.43 1.594-3.573 1.594c-1.897 0-3.244-1.649-3.244-4.288 0-3.382 1.704-4.591 3.381-4.591 2.42 0 3.189 1.567 3.849 3.574l.88 2.749c.88 2.666 2.529 4.81 7.285 4.81 3.409 0 5.718-1.044 5.718-3.793 0-2.227-1.265-3.381-3.63-3.931l-1.758-.385c-1.21-.275-1.567-.77-1.567-1.595 0-.934.742-1.484 1.952-1.484 1.32 0 2.034.495 2.144 1.677l2.749-.33c-.22-2.474-1.924-3.492-4.729-3.492-2.474 0-4.893.935-4.893 3.932 0 1.87.907 3.051 3.189 3.601l1.87.44c1.402.33 1.869.907 1.869 1.704 0 1.017-.99 1.43-2.86 1.43-2.776 0-3.93-1.457-4.59-3.464l-.907-2.75c-1.155-3.573-2.997-4.893-6.653-4.893C2.144 5.333 0 7.89 0 12.233c0 4.18 2.144 6.434 5.993 6.434 3.106 0 4.591-1.457 4.591-1.457z"/></svg></a>
+        </div>
+        <!-- end playing -->
+    </div>
+    <!-- end page content -->
+</body>
+<script>
+    function mobile_nav_dropdown() {
+        var navbar = document.getElementById("navbar");
+        if (navbar.className === "navbar") { navbar.className += " mobile"; }
+        else { navbar.className = "navbar"; }
+    }
+</script>
+<script>
+    document.querySelector(':root').style.setProperty('--mobile_menu_y_offset', document.getElementById('navbar').offsetHeight+'px');
+</script>
+<script>
+    // now playing
+    fetch('/api/lastfmapi?req_type=recent_song').then(response => response.json())
+    .then(data => {
+        document.getElementById('now_playing_title').innerText = data.song_name
+        document.getElementById('now_playing_title_url').href = data.song_last_fm_url
+        document.getElementById('now_playing_artist').innerText = data.artist_name
+        document.getElementById('now_playing_artist_url').href = data.artist_last_fm_url
+        document.getElementById('now_playing_album_art').style.setProperty('--image-src', 'url(' + data.image + ')')
+    })
+    .catch(error => { console.log('request failed:', error) });
+
+    // top album this week
+    fetch('/api/lastfmapi?req_type=top_album_week').then(response => response.json())
+    .then(data => {
+        document.getElementById('album_this_week_title').innerText = data.album_name
+        document.getElementById('album_this_week_title_url').href = data.album_last_fm_url
+        document.getElementById('album_this_week_artist').innerText = data.artist_name
+        document.getElementById('album_this_week_artist_url').href = data.artist_last_fm_url
+        document.getElementById('top_album_this_week').innerText = 'top album this week ('+data.playcount+' plays):'
+        document.getElementById('album_this_week_album_art').style.setProperty('--image-src', 'url(' + data.image + ')')
+        
+    })
+    .catch(error => { console.log('request failed:', error) });
+
+    // top album this month
+    fetch('/api/lastfmapi?req_type=top_album_month').then(response => response.json())
+    .then(data => {
+        document.getElementById('album_this_month_title').innerText = data.album_name
+        document.getElementById('album_this_month_title_url').href = data.album_last_fm_url
+        document.getElementById('album_this_month_artist').innerText = data.artist_name
+        document.getElementById('album_this_month_artist_url').href = data.artist_last_fm_url
+        document.getElementById('top_album_this_month').innerText = 'top album this month  ('+data.playcount+' plays):'
+        document.getElementById('album_this_month_album_art').style.setProperty('--image-src', 'url(' + data.image + ')')
+    })
+    .catch(error => { console.log('request failed:', error) });
+    document.getElementById('now_playing').classList.add('activated')
+</script>
+<!-- i love my wife -->
+<!-- lm + poppy 2023 -->
+<!-- ©poppy 2023 -->

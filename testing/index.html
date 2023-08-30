@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<head>
+    <style>
+        .uwu { 
+            color: orange;
+            transition: color 0.5s; 
+        }
+        .uwu.default { color: red; }
+        .uwu.state2 { color: blue; }
+    </style>
+</head>
+<body>
+    <h1 class="uwu" id="header">h- hewwo??</h1>
+    <button onclick="swap()">uwu</button>
+</body>
+<script>
+    var yeah = false
+
+    function swap() {
+        var header = document.getElementById('header')
+        if (!yeah) {
+            header.classList.add('state2')
+            // header.classList.remove('default')
+        } else {
+            // header.classList.add('default')
+            header.classList.remove('state2')
+        }
+        yeah = !yeah
+    }
+</script>

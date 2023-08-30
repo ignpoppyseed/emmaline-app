@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="theme-color" content="#100024">
+    <link rel="icon" href="/static/media/fav64x.png" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>projects | emmaline.app</title>
+
+    <!-- set up discord / twitter embed -->
+    <meta content="projects | emmaline.app" property="og:title">
+    <meta content="the place for all of emmaline's projects and online presence!" property="og:description">
+    <meta name="og:image" itemprop="image" content="https://emmaline.app/static/media/mainborder256x.png">
+</head>
+<body>
+    <!-- begin navbar + header -->
+    <div id="navbar" class="navbar">
+        <div style="display: flex; width: 100%;">
+                <a href="/">
+                    <div id="brand_container">
+                        <img class="me_img" id="nav_img" src="/static/media/7d53dad3c0dda96f5dea0ad071183a43.png">
+                        <p id="nav_text" class="bold">emmaline.app</p>
+                    </div>
+                </a>
+                <a class="nav_element nav_icon" onclick="mobile_nav_dropdown()"><i class="fa fa-bars"></i></a>
+            </div>
+        <div id="nav_elements" class="nav_elements">
+            <a class="nav_element" href="/"><p>home</p></a>
+            <a class="nav_element" href="/about"><p>about</p></a>
+            <a class="nav_element nav_selected" href="/projects"><p>projects</p></a>
+            <a class="nav_element" href="/socials"><p>socials</p></a>
+            <!-- <a class="nav_element" href="https://poppys.cafe" target="_blank"><p>blog</p></a> -->
+            <a class="nav_element" href="/nowplaying"><p>what i'm listening to</p></a>
+        </div>
+    </div>
+    <div id="nav_space" style="position: relative; height: var(--mobile_menu_y_offset); z-index: -1;"></div>
+    <!-- end navbar + header -->
+    <!-- begin page content -->
+    <div class="all_projects">
+        <!-- begin projects -->
+        <div class="project_container" onclick="window.open('https://emmaline.app', '_blank');">
+            <div class="project_image" style="--image-src:url(/static/media/home.png)"></div>
+            <div class="project_text">
+                <a id="now_playing_title_url"><p id="now_playing_title" class="bold onefive">emmaline.app</p></a>
+                <a id="now_playing_artist_url"><p id="now_playing_artist" class="stc">a portfolio / personal home page (this website!)</p></a>
+            </div>
+        </div>
+
+        <div class="project_container" onclick="window.open('https://cloverbrand.xyz/egirl', '_blank');">
+            <div class="project_image" style="--image-src:url(/static/media/egirl.png)"></div>
+            <div class="project_text">
+                <a id="now_playing_title_url"><p id="now_playing_title" class="bold onefive">egirl</p></a>
+                <a id="now_playing_artist_url"><p id="now_playing_artist" class="stc">multipurpose + fun discord bot</p></a>
+            </div>
+        </div>
+
+        <div class="project_container" onclick="window.open('https://possum-game.github.io/', '_blank');">
+            <div class="project_image" style="--image-src:url(/static/media/possum.png)"></div>
+            <div class="project_text">
+                <a id="now_playing_title_url"><p id="now_playing_title" class="bold onefive">POSSUMBLY THE BEST GAME EVER</p></a>
+                <a id="now_playing_artist_url"><p id="now_playing_artist" class="stc">2D platformer game built with Unity</p></a>
+            </div>
+        </div> 
+
+        <div class="project_container" onclick="window.open('https://www.poppys.cafe/latest', '_blank');">
+            <div class="project_image" style="--image-src:url(/static/media/poppyscafe.png)"></div>
+            <div class="project_text">
+                <a id="now_playing_title_url"><p id="now_playing_title" class="bold onefive">poppy's cafe</p></a>
+                <a id="now_playing_artist_url"><p id="now_playing_artist" class="stc">personal blog with a backend written in Python</p></a>
+            </div>
+        </div>
+        
+        <div class="project_container" onclick="window.open('https://fazbear.cc', '_blank');">
+            <div class="project_image" style="--image-src:url(/static/media/fazbear.png)"></div>
+            <div class="project_text">
+                <a id="now_playing_title_url"><p id="now_playing_title" class="bold onefive">fazbear.cc</p></a>
+                <a id="now_playing_artist_url"><p id="now_playing_artist" class="stc">an installment in a series of sites that display a predetermined list of fullscreen images</p></a>
+            </div>
+        </div>
+        
+        <div class="project_container" onclick="window.open('https://github.com/lilypondcc/server-stat-grapher', '_blank');">
+            <div class="project_image" style="--image-src:url(/static/media/stats.png)"></div>
+            <div class="project_text">
+                <a id="now_playing_title_url"><p id="now_playing_title" class="bold onefive">server stat grapher</p></a>
+                <a id="now_playing_artist_url"><p id="now_playing_artist" class="stc">an automated script to graph a discord server's growth over time</p></a>
+            </div>
+        </div>
+        <!-- end projects -->
+    </div>
+    <!-- end page content -->
+</body>
+<script>
+    function mobile_nav_dropdown() {
+        var navbar = document.getElementById("navbar");
+        if (navbar.className === "navbar") { navbar.className += " mobile"; }
+        else { navbar.className = "navbar"; }
+    }
+</script>
+<script>
+    document.querySelector(':root').style.setProperty('--mobile_menu_y_offset', document.getElementById('navbar').offsetHeight+'px');
+</script>
+<!-- i love my wife -->
+<!-- lm + poppy 2023 -->
+<!-- ©poppy 2023 -->

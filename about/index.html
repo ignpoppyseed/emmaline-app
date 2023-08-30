@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="theme-color" content="#100024">
+    <link rel="icon" href="/static/media/fav64x.png" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>about | emmaline.app</title>
+    
+    <!-- set up discord / twitter embed -->
+    <meta content="about | emmaline.app" property="og:title">
+    <meta content="the place for all of emmaline's projects and online presence!" property="og:description">
+    <meta name="og:image" itemprop="image" content="https://emmaline.app/static/media/mainborder256x.png">
+</head>
+<body>
+    <!-- begin navbar + header -->
+    <div id="navbar" class="navbar">
+        <div style="display: flex; width: 100%;">
+                <a href="/">
+                    <div id="brand_container">
+                        <img class="me_img" id="nav_img" src="/static/media/7d53dad3c0dda96f5dea0ad071183a43.png">
+                        <p id="nav_text" class="bold">emmaline.app</p>
+                    </div>
+                </a>
+                <a class="nav_element nav_icon" onclick="mobile_nav_dropdown()"><i class="fa fa-bars"></i></a>
+            </div>
+        <div id="nav_elements" class="nav_elements">
+            <a class="nav_element" href="/"><p>home</p></a>
+            <a class="nav_element nav_selected" href="/about"><p>about</p></a>
+            <a class="nav_element" href="/projects"><p>projects</p></a>
+            <a class="nav_element" href="/socials"><p>socials</p></a>
+            <!-- <a class="nav_element" href="https://poppys.cafe" target="_blank"><p>blog</p></a> -->
+            <a class="nav_element" href="/nowplaying"><p>what i'm listening to</p></a>
+        </div>
+    </div>
+    <div id="nav_space"></div>
+    <!-- end navbar + header -->
+    <div id="about_me_and_img_container2">
+        <div id="about_me2">
+            <a class="bold big_text shine" href="https://github.com/ignpoppyseed" style="width: fit-content;">emmaline</a>
+            <p class="stc onefive">My name is emmaline, but people online call me poppy! I'm a software engineer hoping to one day get a job in the field. I mostly program in Python and JavaScript, but I love learning new languages and frequently branch out to whatever I feel can get the job done best. Some of my most popular projects include <a class="shine" href="https://cloverbrand.xyz/egirl/" target="_blank">egirl</a>, my discord bot, and the <a class="shine" href="https://possum-game.github.io" target="_blank">possum game</a>, a 2D platformer I built for my first Unity project. I have a cat named Velcro who is my silly little guy. See if you can find his secret message somewhere on this website! Other interests of mine include Minecraft, Building PCs, and hanging out with my <a class="shine" href="https://www.ikea.com/us/en/p/blahaj-soft-toy-shark-90373590/" target="_blank">BLÅHAJ</a>. I speak English natively, but I'm currently learning Norwegian as well! Kult, sant?</p>
+        </div>
+        <img class="me_img" src="/static/media/7d53dad3c0dda96f5dea0ad071183a43.png">
+    </div>
+</body>
+<script>
+    function mobile_nav_dropdown() {
+        var navbar = document.getElementById("navbar");
+        if (navbar.className === "navbar") { navbar.className += " mobile"; }
+        else { navbar.className = "navbar"; }
+    }
+</script>
+<script>
+    document.querySelector(':root').style.setProperty('--mobile_menu_y_offset', document.getElementById('navbar').offsetHeight+'px');
+</script>
+<!-- i love my wife -->
+<!-- lm + poppy 2023 -->
+<!-- ©poppy 2023 -->
