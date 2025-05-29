@@ -1,4 +1,3 @@
-// http://ws.audioscrobbler.com/2.0/?method=user.gettopartists&user=xpoppyseed&api_key=90654ccccb1d3b5b0516a90d2d3caa11&format=json&period=1month
 import type { VercelRequest, VercelResponse } from '@vercel/node'
 import axios, { AxiosResponse } from 'axios';
 // import fetch from 'node-fetch';
